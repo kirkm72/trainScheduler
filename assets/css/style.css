@@ -1,0 +1,12 @@
+/* body{
+    background: url(../images/trainWreck.jpg) top center no-repeat;
+    background-size: 500px 300px; 
+    
+  } */
+
+#title{
+    display: flex; /* Look into  */
+    justify-content: center; 
+    color: rgb(175, 12, 47);
+    font-size: 35px;
+  }
