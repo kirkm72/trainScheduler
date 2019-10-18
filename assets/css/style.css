@@ -1,8 +1,7 @@
-/* body{
-    background: url(../images/trainWreck.jpg) top center no-repeat;
-    background-size: 500px 300px; 
-    
-  } */
+body{
+    background: url(../images/topographic.png) top center no-repeat;
+    background-repeat: repeat;
+  }
 
 #title{
     display: flex; /* Look into  */
