@@ -10,43 +10,45 @@ var fbaseCfg = { // Firebase info below is unique for every firebase DB setup
 firebase.initializeApp(fbaseCfg); // Initialize Firebase
 console.log("Firebase config completed");
 
+var addCity=""; // These variables must be in root scopr or second event listener will not see value
+var addName="";
+var addInt=0;
+var addTime="";
+var removeName="";
+
 $(document).ready(function () {
-    //console.log("After doc.ready");
-    // const trainDbase = firebase.database().ref('train/'); do not set the ref here
     trainDbase = firebase.database();
-    // trainDbase.ref('train/').push({ //set overwrites to firebase USE A REFERENCE
-    //     test: 98765
-    // });
-    //console.log("first push");
-    // trainDbase.ref('train/').push({ //write to firebase
-    //     test2: "abcde"
-    // });
-    //console.log("second push");
-    // trainDbase.ref('train/').once('value').then(function (snapshot) {
-    //     console.log(snapshot.val()); //read from firebase
-    
 
 // Form input section
 $(document).on("click", ".addBtn", function (event) { 
     event.preventDefault();
-    //console.log("After on Click");
-    let addCity = $("#inputCity").val().trim();
-    let addName = $("#inputName").val().trim();
-    let addInt = $("#inputInterval").val();
-    let addTime = $("#inputTime").val().trim();
+    addCity = $("#inputCity").val().trim();
+    addName = $("#inputName").val().trim();
+    addInt = $("#inputInterval").val();
+    addTime = $("#inputTime").val().trim();
     console.log("before sent to fBase", addName, addCity, addInt, addTime);
     $("#form").get(0).reset(); //native javascript: resets input form after submission
 
-    trainDbase.ref('train/').push({ //set overwrites to firebase, use push
+    // Writes to fBase
+    trainDbase.ref('train/'+addName).update({ //set overwrites to firebase, use update
         name: addName,
         city: addCity,
         interval: addInt,
         time: addTime
     });
 
-    trainDbase.ref('train/').once('value').then(function (snapshot) {
+    // Update DOM table with listed trains
+    
+
+    trainDbase.ref('train/').once('value').then(function (snapshot) { // investigate diff between on & once
     console.log(snapshot.val()); //read from firebase
     });
+}); //submit button braces
+
+$(document).on("click", ".remove", function (event) {
+    event.preventDefault();
+    console.log("inside remove button listener looking for ", addName);
+    trainDbase.ref("train/"+addName).remove();
 });
 
-});
+}); // doc.ready braces
