@@ -38,9 +38,11 @@
             <div class='col-md-12'>
                 <img src='assets/images/trainWreck.jpg' class='mx-auto d-block' width="700"></img>
             </div>
-
         </div>
     </div>
+    <br>
+    <br>
+    <div class='clockDiv'></div>
     <br>
     <br>
     <div class='container'>
@@ -61,7 +63,8 @@
                     </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <input type="text" class="form-control" id="inputTime" placeholder="Time in Military Time">
+                    <input type="text" class="form-control" id="inputTime"
+                        placeholder="1st Train Time in Military Time">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary addBtn">Submit</button>
@@ -69,15 +72,36 @@
             </div>
         </form>
     </div>
-    <div>
+    <br>
+    <br>
+    <!-- <div>
         <button class='btn btn-primary remove'>Test Erase Button</button>
-    </div>
-    <br>
-    <br>
-    <div id="clockDiv"></div>
-    <br>
-    <br>
-    <div id="boardDiv"></div>
+    </div> -->
+
+    <table class="table table-hover table-dark">
+        <thead id="header">
+            <tr>
+                <th scope="col">Train Name</th>
+                <th scope="col">Destination City</th>
+                <th scope="col">Interval</th>
+                <th scope="col">First Train</th>
+                <th scope="col">Next Arrival Military</th>
+                <th scope="col">Next Arrival Standard</th>
+                <th scope="col">Remove?</th>
+            </tr>
+        </thead>
+        <tbody id="table">
+            <!-- <tr>
+                <th scope="row">Train1</th>
+                <td>Dest</td>
+                <td>Int</td>
+                <td>1st Time</td>
+                <td>Mil</td>
+                <td>Standard</td>
+                <td class='btn btn-primary remove'>Remove?</td>
+            </tr> -->
+        </tbody>
+    </table>
 </body>
 
 </html>
