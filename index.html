@@ -16,10 +16,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="assets/javascript/moment.js"></script>
+    <!-- <script src="assets/javascript/moment.js"></script> -->
     <script src="assets/javascript/index.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+        integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
     <script defer src="assets/javascript/index.js"></script>
     <link rel="stylesheet" href='./assets/css/style.css'>
 </head>
@@ -40,11 +43,11 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <div class='clockDiv'></div>
-    <br>
-    <br>
+    <div class='containter'></div>
+    <div class="row">
+        <div id="mClock" class="offset-md-4 col-md-2 clockDiv">16:35</div>
+        <div id="sClock" class="col-md-2 clockDiv">04:35PM</div>
+    </div>
     <div class='container'>
         <form id="form">
             <div class="form-row col-md-12">
@@ -52,19 +55,26 @@
                     <input type="text" class="form-control" id="inputName" placeholder="Train Name">
                 </div>
                 <div class="form-group col-md-3">
-                    <input type="text" class="form-control" id="inputCity" placeholder="Destination City">
+                    <input type="text" class="form-control" id="inputCity" placeholder="Origin City">
                 </div>
                 <div class="form-group col-md-2">
                     <select id="inputInterval" class="form-control">
-                        <option selected>Time Interval</option>
-                        <option value="15">15 Minutes</option>
-                        <option value="30">30 Minutes</option>
-                        <option value="60">60 Minutes</option>
+                        <option selected>Arrives on the: </option>
+                        <option value="15">15th Minute</option>
+                        <option value="30">30th Minute</option>
+                        <option value="45">45th Minute</option>
                     </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <input type="text" class="form-control" id="inputTime"
-                        placeholder="1st Train Time in Military Time">
+                    <select id="firstTrain" class="form-control">
+                        <option selected>First Train in Military Time</option>
+                        <option value="00:00">Midnight</option>
+                        <option value="04:00">04:00</option>
+                        <option value="08:00">08:00</option>
+                        <option value="12:00">Noon</option>
+                        <option value="16:00">16:00</option>
+                        <option value="20:00">20:00</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary addBtn">Submit</button>
@@ -73,33 +83,20 @@
         </form>
     </div>
     <br>
-    <br>
-    <!-- <div>
-        <button class='btn btn-primary remove'>Test Erase Button</button>
-    </div> -->
 
     <table class="table table-hover table-dark">
         <thead id="header">
             <tr>
                 <th scope="col">Train Name</th>
-                <th scope="col">Destination City</th>
-                <th scope="col">Interval</th>
+                <th scope="col">Origin City</th>
+                <th scope="col">Arrives on the:</th>
                 <th scope="col">First Train</th>
-                <th scope="col">Next Arrival Military</th>
-                <th scope="col">Next Arrival Standard</th>
-                <th scope="col">Remove?</th>
+                <th scope="col">Next Arrival in:</th>
+                <!-- <th scope="col">Next Arrival Standard</th> -->
             </tr>
         </thead>
         <tbody id="table">
-            <!-- <tr>
-                <th scope="row">Train1</th>
-                <td>Dest</td>
-                <td>Int</td>
-                <td>1st Time</td>
-                <td>Mil</td>
-                <td>Standard</td>
-                <td class='btn btn-primary remove'>Remove?</td>
-            </tr> -->
+        
         </tbody>
     </table>
 </body>

@@ -9,6 +9,19 @@ body{
     color: rgb(175, 12, 47);
     font-size: 35px;
   }
+
   #header{
     color: rgb(175, 12, 47);
+    font-size: 20px;
+  }
+  
+  .clockDiv{
+    width: 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(158, 230, 24);
+    font-family: 'Audiowide', sans-serif;
+    font-size: 2em; 
   }
