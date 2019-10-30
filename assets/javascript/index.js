@@ -52,7 +52,9 @@ $(document).ready(function () {
         let City = snapshot.val().city;
         let Int = snapshot.val().interval;
         let firstTime = snapshot.val().time;
-        var now = moment();
+
+      
+        //var now = moment();
 
         // Update DOM
         let row = $('<tr>');
@@ -72,14 +74,18 @@ $(document).ready(function () {
         } else {
             td3.text(firstTime);
         };
-        if (Int >= (moment().minute())) {
-            let next = Int - moment().minute();
-            td4.text(next + " Minutes");
-        }
-        if (Int < now.minute()){
-            let next = 60 - parseInt(now.minute()) + parseInt(Int); 
-            td4.text(next + " Minutes");
-        }
+        setInterval(() => { // <td4> updates within setInterval scope to keep ETA correct
+            let now = moment();
+            if (Int >= now.minute()) {
+                let next = Int - now.minute();
+                td4.text(next + " Minutes");
+            }
+            if (Int < now.minute()){
+                let next = 60 - parseInt(now.minute()) + parseInt(Int); 
+                td4.text(next + " Minutes");
+            }
+        }, 1000);
+        
         row.append(th);
         row.append(td1);
         row.append(td2);
